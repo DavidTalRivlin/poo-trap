@@ -1,0 +1,64 @@
+/* :root {
+ */
+/* } */
+
+
+body {
+      background-color: rgb(166, 166, 190);
+      text-align: center;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+footer {
+      background-color: brown;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      text-align: center;
+      font-size: 25px;
+      font-weight: 800;
+}
+
+table{
+margin: auto;
+}
+
+
+.poo{
+font-size: 50px;      
+}
+
+.cell {
+      width: 50px;
+      height: 50px;
+      background-color: aliceblue;
+      text-align: center;
+      border: solid grey 5px;
+      cursor: pointer;
+}
+
+.cell:hover {
+
+      filter: brightness(75%);
+}
+
+
+.covered{
+      background-color: brown;
+      /* visibility: hidden; */
+}
+
+.inner-text-hidden{
+      visibility: hidden;
+}
+
+.inner-text-visible{
+      visibility: visible;
+}
+
+.cell-contant{
+      font-size: 35px;
+}
+
+
