@@ -29,7 +29,7 @@ var gGame = {
 
 function onInit(boardsize) {
       gBoard = buildBoard()
-      gLevel.LIVES = 8
+      gLevel.LIVES = 3
       gGame.isOn = true
       gGame.shownCount = 0
       gGame.markedCount = 0
@@ -42,7 +42,7 @@ function onInit(boardsize) {
                   gLevel.MINES = 9
                   break
             case 12:
-                  gLevel.MINES = 23
+                  gLevel.MINES = 18
                   break
       }
 
