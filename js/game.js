@@ -21,13 +21,15 @@ var gGame = {
       isOn: false,
       shownCount: 0,
       markedCount: 0,
-      secsPassed: 0
+      secsPassed: 0,
+      isHint: false,
+      hintCount: 3,
 }
 
 
 function onInit(boardsize) {
       gBoard = buildBoard()
-      gLevel.LIVES = 2
+      gLevel.LIVES = 8
       gGame.isOn = true
       gGame.shownCount = 0
       gGame.markedCount = 0
@@ -213,6 +215,7 @@ function expandShown(board, rowIdx, colIdx) {
             for (let j = colIdx - 1; j <= colIdx + 1; j++) {
                   if (j < 0 || j >= board[i].length) continue
                   if (i === rowIdx && j === colIdx) continue
+
                   var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`)
                   elCell.classList.remove('covered')
                   gBoard[i][j].isShown = true
@@ -221,9 +224,17 @@ function expandShown(board, rowIdx, colIdx) {
                   if (elSpan) {
                         elSpan.classList.remove('inner-text-hidden')
                         elSpan.classList.add('inner-text-visible')
+
                   }
+                  
+
+                  // if (!gBoard[i][j].isMine && gBoard[i][j].minesAroundCount === 0) {
+                  //     setTimeout(expandShown,10,gBoard,i,j)
+                  // }
             }
+
       }
+
 
 }
 
@@ -292,7 +303,7 @@ function onVictory() {
       elModaltext.innerText = '⭐⭐⭐ YOU ARE VICTORIOUS ⭐⭐⭐'
       var audio = new Audio('assets/victory.mp3');
       audio.play();
-      
+
       stopTimer();
 }
 
@@ -311,7 +322,7 @@ function onDefeat() {
 
       var audio = new Audio('assets/lose.mp3');
       audio.play();
-      
+
       stopTimer();
 }
 
@@ -331,7 +342,7 @@ function renderCell(iIdx, jIdx, value) {
 function setBoardSize(boardSize) {
       var elLeftPoo = document.querySelector('.poo-left')
       elLeftPoo.innerText = ''
-      
+
       switch (boardSize) {
             case 4:
                   gLevel.SIZE = 4
@@ -366,3 +377,8 @@ function countIsShownCells() {
 
 }
 
+function clickHint(){
+// not writen yet
+
+
+}
