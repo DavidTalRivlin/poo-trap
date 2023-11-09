@@ -17,15 +17,19 @@
         <button onclick="onInit()">Play Again</button>
     </div>
 
-<!-- <h5><span class="fly">🪰</span></h5>
-<h5><span class="fly">🪰</span></h5> -->
    <h1>Poo Trap <span class="poo">💩</span></h1>
-   <h3>Watch your steps!</h3>
-   <h4>Score: <span class="score">0</span> </h4>
-   <h4>lives: <span class="lives-left">0</span> </h4>
-   <!-- <h4>steps to go: <span class="steps-to-go"></span> </h4> -->
-   
-   
+   <h3 class="slogen">Watch your steps!</h3>
+  
+   <div class="data zone">
+       <span>Score: <span class="score">0</span> </span> <br>
+       <span>lives: <span class="lives-left">0</span> </span><br>
+       <span>Time: <span class="timer">0.0</span> </span><br>
+       <span>Poo Left: <span class="poo-left"></span> </span><br>
+    </div>
+       
+    <div>
+       <button class="poo-button"> <img class="button-picture" src="img/1.png" alt="poo-button" onclick="onInit()" > </button>
+   </div>
    
 
     <table class="mines-zone">
@@ -48,9 +52,7 @@
     </table>
 <br>
 
-<h3 >
-    Time: <span class="timer">0.0</span> 
-</h3>
+
 <br>
 <button class="gridbtn" onclick="changeBoardSize(4)">4X4</button>
 <button class="gridbtn"onclick="changeBoardSize(8)">8X8</button>

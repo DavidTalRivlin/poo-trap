@@ -14,36 +14,51 @@ footer {
       width: 100%;
       position: absolute;
       bottom: 0;
-      padding: 20px;
+      padding: 10px;
       text-align: center;
-      font-size: 25px;
+      font-size: 15px;
       font-weight: 800;
 }
 
-table{
+h1 {
+      margin-bottom: 5px;
+}
+
+table {
 margin: auto;
 }
 
+.slogen {
+      margin-top: 1px;
+}
 
-.poo{
-font-size: 50px;      
+.poo-button{
+      width: 80px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+}
+
+.poo-button:hover{
+      filter: brightness(75%); 
+      
 }
 
 .cell {
-      width: 50px;
-      height: 50px;
+      width: 25px;
+      height: 25px;
       background-color: aliceblue;
       text-align: center;
-      border: solid grey 5px;
+      border: solid grey 2px;
       cursor: pointer;
-      font-size: 25px;
+      font-size: 18px;
+      border-radius: 5px;
 }
 
 .cell:hover {
 
       filter: brightness(75%);
 }
-
 
 .covered{
       background-color: rgb(185, 94, 66)
@@ -57,18 +72,14 @@ font-size: 50px;
       display: inline;
 }
 
-
-.marked{
-      font-size: 35px;
-      width: 20px;
-
-}
-
 .marked-img{
-      width: 45px;
-      
+      width: 22px;      
 }
 
+.button-picture{
+      width: 100%;
+      margin: auto;
+}
 
 .modal {
       text-align: center;

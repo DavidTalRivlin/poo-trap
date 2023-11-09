@@ -6,7 +6,7 @@ const SMELL = 'Smell'
 var gGameInterval
 var gStartTime
 
-const SMELL_IMG = '<img src="img/rotten.png" class="marked-img">'
+const SMELL_IMG = '<img src="img/marked.png" class="marked-img">'
 
 
 var gLevel = {
@@ -29,7 +29,7 @@ function onInit() {
       gBoard = buildBoard()
       // setRandomMines(gBoard) //disabled for develp stage ////////////////////////////////////////
       gLevel.LIVES = 2
-      gLevel.MINES = 3
+      gLevel.MINES = 1
 
       gGame.isOn = true
       gGame.shownCount = 0
@@ -41,7 +41,8 @@ function onInit() {
       gGameInterval = startTimer()
 
 
-
+      var elPooImg = document.querySelector('.button-picture')
+      elPooImg.src = 'img/4.png'
 
       var elLives = document.querySelector('.lives-left')
       elLives.innerHTML = gLevel.LIVES
@@ -78,7 +79,7 @@ function buildBoard() { //modal
 
       // console.table(board)
       // console.log(board)
-      countIsShownCells('buildBoard')
+
       return board
 }
 
@@ -170,8 +171,9 @@ function reRenderBoard(board) {
 
             }
       }
-      countIsShownCells('reRenderBoard')
+
 }
+
 
 function onCellClicked(elCell, iIdx, jIdx) {
       // console.log('elCell', elCell)
@@ -184,10 +186,6 @@ function onCellClicked(elCell, iIdx, jIdx) {
             setRandomMines(gBoard, iIdx, jIdx)
             setMinesNegsCount(gBoard)
             reRenderBoard(gBoard)
-            countIsShownCells('onCellClicked - first click')
-
-
-
       }
 
       if (!gGame.isOn) return
@@ -209,7 +207,10 @@ function onCellClicked(elCell, iIdx, jIdx) {
             elCell.classList.remove('covered')
             var elMineSpan = elCell.querySelector('.mine')
             elMineSpan.classList.remove('inner-text-hidden')
-            countIsShownCells('onCellClicked - is mine?')
+
+            var elPooImg = document.querySelector('.button-picture')
+            elPooImg.src = 'img/5.png'
+
 
 
             // showing all the mines if a mine is pressed and if its the last life:
@@ -225,7 +226,7 @@ function onCellClicked(elCell, iIdx, jIdx) {
                                     var elMineSpan = elMineCell.querySelector('.mine')
                                     elMineSpan.classList.remove('inner-text-hidden')
                                     checkGameOver()
-                                    countIsShownCells('onCellClicked - on defeat')
+
                               }
                         }
                   }
@@ -241,7 +242,7 @@ function onCellClicked(elCell, iIdx, jIdx) {
                   elSpan.classList.add('inner-text-visible')
                   elSpan.classList.remove('inner-text-hidden')
                   gGame.shownCount++
-                  countIsShownCells('onCellClicked - all others')
+
             }
       }
 
@@ -285,7 +286,7 @@ function expandShown(board, rowIdx, colIdx) {
                   }
             }
       }
-      countIsShownCells('expendShown')
+
 }
 
 
@@ -341,6 +342,8 @@ function checkGameOver() {
       // console.log('gGame.markedCount', gGame.markedCount)
       // console.log('gGame.shownCount', gGame.shownCount)
       // console.log('gLevel.SIZE',gLevel.SIZE)
+      countIsShownCells()
+
       if (((Math.pow(gLevel.SIZE, 2)) === gGame.markedCount + gGame.shownCount) && gGame.markedCount === gLevel.MINES) {
 
             // console.log('Game Over - victory')
@@ -361,6 +364,9 @@ function checkGameOver() {
 function onVictory() {
       var elModal = document.querySelector('.modal')
       elModal.style.display = 'block'
+
+      var elPooImg = document.querySelector('.button-picture')
+      elPooImg.src = 'img/1.png'
 
       var elModaltext = document.querySelector('.modal-text')
       elModaltext.innerText = '⭐⭐⭐ YOU ARE VICTORIOUS ⭐⭐⭐'
@@ -420,7 +426,7 @@ function changeBoardSize(num) {
 }
 
 
-function countIsShownCells(fromwhere) {
+function countIsShownCells() {
       var isShownCounter = 0
       for (let i = 0; i < gBoard.length; i++) {
             for (let j = 0; j < gBoard[i].length; j++) {
@@ -429,6 +435,12 @@ function countIsShownCells(fromwhere) {
       }
       // console.log('isShownCounter printed from:',fromwhere,' : ' ,isShownCounter)
       gGame.shownCount = isShownCounter
-      console.log('gGame.shownCount', gGame.shownCount)
+
+      var elPoints = document.querySelector('.score')
+      elPoints.innerText = gGame.shownCount
+
+      var elLeftPoo = document.querySelector('.poo-left')
+      elLeftPoo.innerText = gLevel.MINES
+
 }
 
