@@ -14,11 +14,27 @@ function getNegsCount(board, rowIdx, colIdx, strPar) {
       return count
 }
 
-
-
-
 function getRandomInt(min, max) {
       min = Math.ceil(min)
       max = Math.floor(max)
       return Math.floor(Math.random() * (max - min) + min) // The maximum is exclusive and the minimum is inclusive
+}
+
+
+
+function startTimer() {
+
+      const elTimer = document.querySelector('.timer')
+      gStartTime = Date.now()
+      
+      gGameInterval = setInterval(() => {
+            gGame.secsPassed = ((Date.now() - gStartTime) / 1000).toFixed(0)
+            elTimer.innerText = gGame.secsPassed
+          }, 121)
+
+}
+
+
+function stopTimer() {
+      clearInterval(gGameInterval)
 }
