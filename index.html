@@ -12,7 +12,7 @@
 <body onload="onInit()" >
 
     <div class="modal">
-        <button  onclick="closeModal()">x</button>
+        <button  class="x-button" onclick="closeModal()">x</button>
         <h2 class="modal-text">MODAL TEXT</h2>
         <button onclick="onInit()">Play Again</button>
     </div>
@@ -22,7 +22,7 @@
   
    <div class="data zone">
        <span>Score: <span class="score">0</span> </span> <br>
-       <span>lives: <span class="lives-left">0</span> </span><br>
+       <span>Lives: <span class="lives-left">0</span> </span><br>
        <span>Time: <span class="timer">0.0</span> </span><br>
        <span>Poo Left: <span class="poo-left"></span> </span><br>
     </div>
@@ -33,30 +33,14 @@
    
 
     <table class="mines-zone">
-        <!-- <tbody class="board">
-        <tr>
-            <td class="cell" data-i="" data-j="" onclick="onCellClicked(this)">*</td>
-            <td>*</td>
-            <td>*</td>
-            <td>*</td>
-        </tr>
-
-        <tr>
-            <td>*</td>
-            <td>*</td>
-            <td>*</td>
-            <td>*</td>
-        </tr>
-
-      </tbody> -->
     </table>
 <br>
 
 
 <br>
-<button class="gridbtn" onclick="changeBoardSize(4)">4X4</button>
-<button class="gridbtn"onclick="changeBoardSize(8)">8X8</button>
-<button class="gridbtn" onclick="changeBoardSize(12)">12X12</button>
+<button class="gridbtn" onclick="setBoardSize(4)">4X4</button>
+<button class="gridbtn"onclick="setBoardSize(8)">8X8</button>
+<button class="gridbtn" onclick="setBoardSize(12)">12X12</button>
 <footer> David Tal-Rivlin </footer>
     
 
