@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Prosto+One&display=swap');
+
+:root {
+
+      --darkBrown: rgb(111, 66, 45);
+      --lightBrown: rgb(166, 108, 71);
+      --veryLightBrown: rgb(235, 223, 216);
+}
+
+
+body {
+
+      /* background-color: rgb(255, 255, 255); */
+      text-align: center;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      /* background-image: url('img/backGround.png');
+      background-repeat: no-repeat */
+}
+
+
+h1 {
+      margin-bottom: 0px;
+      margin-top: 5px;
+      text-shadow: 2px 1px 4px rgba(0, 0, 0, 0.6);
+      font-size: 50px;
+      font-weight: 900;
+      font-family: 'Prosto One', cursive;
+}
+
+
+h3 {
+      text-shadow: 2px 1px 4px rgba(0, 0, 0, 0.6);
+      font-size: 15px;
+      font-weight: 900;
+      font-family: 'Prosto One', cursive;
+      margin-top: 1px;
+}
+
+
+table {
+      margin: auto;
+      background-color: rgb(255, 255, 255);
+      padding: 15px;
+      border-radius: 10px;
+     
+}
+
+
+footer {
+      background-color: var(--darkBrown);
+      width: 100%;
+      bottom: 0;
+      padding: 10px;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 400;
+      color: #ffffff;
+}
+
+
+.main-div {
+      margin: auto;
+      height: 900px;
+      width: 660px;
+      /* width: 500px; */
+      background-image: url('../img/background.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      
+}
+
+
+.data-zone {
+      text-align: left;
+      font-family: 'Quantico', sans-serif;
+      font-weight: 300;
+      width: 100px;
+      float: right;
+
+}
+
+
+.play-zone {
+      margin-top: 270px;
+}
+
+
+.poo-button {
+      width: 120px;
+      filter: drop-shadow(0px 0px 10px #ffffff);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+}
+
+
+.poo-button:hover {
+      filter: brightness(75%);    
+}
+
+
+.res-table {
+      color: rgb(132, 87, 58);
+      font-weight: 800;
+      font-family: 'Quantico', sans-serif;
+}
+
+
+.cell {
+      text-align: center;
+      background-color: var(--veryLightBrown);
+      transition: all 0.5s ease-out;  
+}
+
+
+.cell-size4 {
+      width: 66.8px;
+      height: 66.8px;
+      border-radius: 10px;
+      border: 3px solid var(--darkBrown);
+
+}
+
+.cell-size8 {
+      
+      width: 28.7px;
+      height: 28.7px;
+      border-radius: 5px;
+      border: 3px solid var(--darkBrown);
+}
+
+
+.cell-size12 {
+      width: 19px;
+      height: 19px;
+      border-radius: 5px;
+      border: 2px solid var(--darkBrown);
+}
+
+
+.font-size4 {
+      font-size: 36px;
+}
+
+
+.font-size8 {
+      font-size: 20px;
+}
+
+
+.font-size12 {
+      font-size: 12px;
+}
+
+
+.covered {
+      background-color: var(--lightBrown);
+      cursor: pointer;
+
+}
+
+
+.covered:hover {
+      filter: brightness(75%);
+}
+
+.mine-border {
+      border-color: red;
+}
+
+.inner-text-hidden {
+      display: none;
+}
+
+
+.inner-text-visible {
+      display: inline;
+}
+
+
+.marked-img {
+      height: 80%;
+
+}
+
+.mine-img {
+      height: 80%;
+
+}
+
+
+.button-picture {
+
+      width: 100%;
+      margin: auto;
+}
+
+
+.gridbtn {
+      background-color: var(--lightBrown);
+      border-radius: 5px;
+      padding: 5px 10px;
+      color: #ffffff;
+      font-size: 20px;
+}
+
+button:hover {
+      filter: brightness(75%);
+}
+
+
+.modal {
+      text-align: center;
+      background-color: var(--lightBrown);
+      font-size: 10px;
+      border-radius: 10px;
+      display: none;
+      padding: 10px;
+      width: 420px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 3px solid var(--darkBrown);
+      filter: drop-shadow(0px 0px 10px #000000);
+
+}
+
+.modal button {
+      float: center;
+      background-color: var(--veryLightBrown);
+}
+
+.x-button {
+
+      float: right;
+      padding: 2px 4px;
+}
+
+.hint-pic {
+      width: 50px;
+      height: 50px;
+      border: none;
+      cursor: pointer;
+
+}
+
+.hint {
+      background-color: transparent;
+      border: none;
+}
+
+
+.color-1 {
+      color: blue;
+}
+
+.color-2 {
+      color: green;
+}
+
+.color-3 {
+      color: red;
+}
+
+.color-4 {
+      color: orange;
+}
+
+.color-5 {
+      color: yellow;
+}
+
+.color-6 {
+      color: rgb(235, 66, 235)
+}
+
+.color-7 {
+      color: rgb(0, 174, 255)
+}
+
+.color-8 {
+      color: rgb(0, 0, 0);
+}

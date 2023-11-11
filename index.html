@@ -6,56 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Poo Trap</title>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+   
 </head>
 
-<body onload="onInit()" >
+<body onload="onInit()">
 
-    <div class="modal">
-        <button  class="x-button" onclick="closeModal()">x</button>
-        <h2 class="modal-text">MODAL TEXT</h2>
-        <button onclick="onInit()">Play Again</button>
+
+    <div class="main-div">
+        <h1>Poo Trap</h1>
+        <h3>Watch your steps!</h3>
+
+        <div class="data-zone">
+            <span>Score: <span class="res-table score">0</span> </span> <br>
+            <span>Lives: <span class="res-table lives-left">0</span> </span><br>
+            <span>Poo Left: <span class="res-table poo-left"></span> </span><br>
+            <span>Time: <span class="res-table timer">0.0</span> </span><br>
+        </div>
+
+        <div class="play-zone">
+            <button class="poo-button"> <img class="button-picture" src="img/1.png" alt="poo-button" onclick="onInit()">
+            </button>
+
+
+
+            <table class="mines-zone">
+            </table>
+        </div>
+
+        <div class="modal">
+            <button class="x-button" onclick="closeModal()">x</button>
+            <h2 class="modal-text">MODAL TEXT</h2>
+            <button onclick="onInit()">Play Again</button>
+        </div>
     </div>
 
-   <h1>Poo Trap <span class="poo">💩</span></h1>
-   <h3 class="slogen">Watch your steps!</h3>
-  
-   <div class="data zone">
-       <span>Score: <span class="score">0</span> </span> <br>
-       <span>Lives: <span class="lives-left">0</span> </span><br>
-       <span>Time: <span class="timer">0.0</span> </span><br>
-       <span>Poo Left: <span class="poo-left"></span> </span><br>
-    </div>
-       
-    <div>
-       <button class="poo-button"> <img class="button-picture" src="img/1.png" alt="poo-button" onclick="onInit()" > </button>
-   </div>
-   
 
-    <table class="mines-zone">
-    </table>
-<br>
+    <button class="gridbtn" onclick="setBoardSize(4)">4X4</button>
+    <button class="gridbtn" onclick="setBoardSize(8)">8X8</button>
+    <button class="gridbtn" onclick="setBoardSize(12)">12X12</button>
 
+    <br>
+    <br>
+    <!-- <button class="hint hint1"> <img class="hint-picture1 hint-pic" onclick="clickHint()" src="img/pngegg.png"
+            alt="sniffing-dog"> </button>
+    <button class="hint hint1"> <img class="hint-picture2 hint-pic" onclick="clickHint()" src="img/pngegg.png"
+            alt="sniffing-dog"> </button>
+    <button class="hint hint1"> <img class="hint-picture3 hint-pic" onclick="clickHint()" src="img/pngegg.png"
+            alt="sniffing-dog"> </button> -->
 
-<br>
-<button class="gridbtn" onclick="setBoardSize(4)">4X4</button>
-<button class="gridbtn"onclick="setBoardSize(8)">8X8</button>
-<button class="gridbtn" onclick="setBoardSize(12)">12X12</button>
+    <br>
+    <br>
 
-<br>
-<br>
-<button class="hint hint1"> <img class="hint-picture1 hint-pic" onclick="clickHint()" src="img/pngegg.png" alt="sniffing-dog">  </button>    
-<button class="hint hint1"> <img class="hint-picture2 hint-pic" onclick="clickHint()" src="img/pngegg.png" alt="sniffing-dog">  </button>    
-<button class="hint hint1"> <img class="hint-picture3 hint-pic" onclick="clickHint()" src="img/pngegg.png" alt="sniffing-dog">  </button>    
+    <footer> David Tal-Rivlin </footer>
 
-
-
-<footer> David Tal-Rivlin </footer>
-    
 
     <script src="js/utils.js"></script>
     <script src="js/game.js"></script>
 
-</body >
+</body>
 
 </html>

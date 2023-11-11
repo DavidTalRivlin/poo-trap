@@ -1,12 +1,10 @@
 'use strict'
 
 var gBoard = []
-const MINE = '💩'
-const SMELL = 'Smell'
 var gGameInterval
 var gStartTime
+var gCheckedCells = []
 
-const SMELL_IMG = '<img src="img/marked.png" class="marked-img">'
 
 
 var gLevel = {
@@ -15,6 +13,9 @@ var gLevel = {
       LIVES: null,
 
 }
+
+var FLY_IMG = '<img src="img/marked.png" class="marked-img">'
+var MINE_IMG = '<img src="img/cell-poo.png" class="mine-img inner-text-hidden">'
 
 
 var gGame = {
@@ -47,6 +48,8 @@ function onInit(boardsize) {
       }
 
 
+
+      gCheckedCells = []
       closeModal()
       renderBoard(gBoard)
       stopTimer()
@@ -57,6 +60,7 @@ function onInit(boardsize) {
 
       var elLives = document.querySelector('.lives-left')
       elLives.innerHTML = gLevel.LIVES
+      elLives.style.color = 'var(--darkBrown)'
 }
 
 
@@ -87,7 +91,7 @@ function renderBoard(board) {//DOM
       for (let i = 0; i < board.length; i++) {
             strHTML += '<tr>\n'
             for (let j = 0; j < board[i].length; j++) {
-                  strHTML += `<td class="cell covered" data-i="${i}" data-j="${j}" 
+                  strHTML += `<td class="cell cell-size${gLevel.SIZE} covered" data-i="${i}" data-j="${j}" 
                   onclick="onCellClicked(this,${i},${j})" 
                   oncontextmenu="onCellMarked(this,event,${i},${j})">`
 
@@ -127,10 +131,10 @@ function reRenderBoard(board) {
             for (let j = 0; j < board[i].length; j++) {
                   const currCell = board[i][j]
                   if (currCell.isMine) {
-                        renderCell(i, j, `<span class="mine inner-text-hidden">${MINE}</span>`)
+                        renderCell(i, j, `${MINE_IMG}`)
                   }
                   if (!currCell.isMine && currCell.minesAroundCount) {
-                        renderCell(i, j, `<span class="near-mine inner-text-hidden">${currCell.minesAroundCount}</span>`)
+                        renderCell(i, j, `<span class="near-mine inner-text-hidden font-size${gLevel.SIZE} color-${currCell.minesAroundCount}">${currCell.minesAroundCount}</span>`)
                   }
 
             }
@@ -159,12 +163,21 @@ function onCellClicked(elCell, iIdx, jIdx) {
 
             gBoard[iIdx][jIdx].isShown = true
 
+
             var elLives = document.querySelector('.lives-left')
             elLives.innerText = gLevel.LIVES
 
+            if (gLevel.LIVES === 1) {
+                  elLives.style.color = 'red'
+            }
+
             elCell.classList.remove('covered')
-            var elMineSpan = elCell.querySelector('.mine')
-            elMineSpan.classList.remove('inner-text-hidden')
+            elCell.classList.add('mine-border')
+            gGame.shownCount++
+
+            var elImg = elCell.querySelector('.mine-img')
+            elImg.classList.remove('inner-text-hidden')
+            elImg.classList.remove('inner-text-visible')
 
             var elPooImg = document.querySelector('.button-picture')
             elPooImg.src = 'img/2.png'
@@ -175,12 +188,15 @@ function onCellClicked(elCell, iIdx, jIdx) {
                   for (let i = 0; i < gBoard.length; i++) {
                         for (let j = 0; j < gBoard[i].length; j++) {
                               if (gBoard[i][j].isMine) {
-                                    gBoard[i][j].isShown = true
 
                                     var elMineCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`)
                                     elMineCell.classList.remove('covered')
-                                    var elMineSpan = elMineCell.querySelector('.mine')
-                                    elMineSpan.classList.remove('inner-text-hidden')
+                                    elMineCell.classList.add('mine-border')
+                                    var elImg = elMineCell.querySelector('.mine-img')
+
+                                    elImg.classList.remove('inner-text-hidden')
+                                    elImg.classList.remove('inner-text-visible')
+
                                     checkGameOver()
 
                               }
@@ -191,13 +207,12 @@ function onCellClicked(elCell, iIdx, jIdx) {
       } else {
 
             gBoard[iIdx][jIdx].isShown = true
-
             elCell.classList.remove('covered')
             const elSpan = elCell.querySelector("span")
+            gGame.shownCount++
             if (elSpan) {
                   elSpan.classList.add('inner-text-visible')
                   elSpan.classList.remove('inner-text-hidden')
-                  gGame.shownCount++
             }
       }
 
@@ -210,12 +225,17 @@ function onCellClicked(elCell, iIdx, jIdx) {
 
 
 function expandShown(board, rowIdx, colIdx) {
+
+
       for (let i = rowIdx - 1; i <= rowIdx + 1; i++) {
             if (i < 0 || i >= board.length) continue
-            for (let j = colIdx - 1; j <= colIdx + 1; j++) {
-                  if (j < 0 || j >= board[i].length) continue
-                  if (i === rowIdx && j === colIdx) continue
 
+            for (let j = colIdx - 1; j <= colIdx + 1; j++) {
+
+                  if (j < 0 || j >= board[i].length) continue
+                  // if (i === rowIdx && j === colIdx) continue              
+
+                  // console.log('i,j', i,j)
                   var elCell = document.querySelector(`[data-i="${i}"][data-j="${j}"]`)
                   elCell.classList.remove('covered')
                   gBoard[i][j].isShown = true
@@ -226,16 +246,23 @@ function expandShown(board, rowIdx, colIdx) {
                         elSpan.classList.add('inner-text-visible')
 
                   }
-                  
 
-                  // if (!gBoard[i][j].isMine && gBoard[i][j].minesAroundCount === 0) {
-                  //     setTimeout(expandShown,10,gBoard,i,j)
-                  // }
+
+
+                  if (!gBoard[i][j].isMine && gBoard[i][j].minesAroundCount === 0) {
+
+                        var currCell = [i, j]
+                        var CurrCellStr = JSON.stringify(currCell);
+                        var gCheckedCellsStr = JSON.stringify(gCheckedCells)
+
+                        if (gCheckedCellsStr.indexOf(CurrCellStr) === -1) {
+                              gCheckedCells.push(currCell)
+                              setTimeout(expandShown, 10, gBoard, i, j)
+                        }
+                  }
             }
-
       }
-
-
+      checkGameOver()
 }
 
 
@@ -257,7 +284,7 @@ function onCellMarked(elCell, ev, i, j) {
       if (elCell.classList.contains('covered')) {
             if (!gBoard[i][j].isMarked) {
                   gBoard[i][j].isMarked = true
-                  renderCell(i, j, SMELL_IMG)
+                  renderCell(i, j, FLY_IMG)
                   gGame.markedCount++
                   checkGameOver()
                   return
@@ -309,7 +336,7 @@ function onVictory() {
 
 
 function onDefeat() {
-      var elMineCells = document.querySelectorAll('.mine')
+      var elMineCells = document.querySelectorAll('.mine-img')
 
       var elModal = document.querySelector('.modal')
       elModal.style.display = 'block'
@@ -336,13 +363,17 @@ function closeModal() {
 function renderCell(iIdx, jIdx, value) {
       var elCell = document.querySelector(`[data-i="${iIdx}"][data-j="${jIdx}"]`)
       elCell.innerHTML = value
+
+
 }
 
 
 function setBoardSize(boardSize) {
-      var elLeftPoo = document.querySelector('.poo-left')
-      elLeftPoo.innerText = ''
+      var elPooLeft = document.querySelector('.poo-left')
+      elPooLeft.innerText = ''
 
+      var elCell = document.querySelectorAll('.cell')
+      console.log
       switch (boardSize) {
             case 4:
                   gLevel.SIZE = 4
@@ -377,8 +408,9 @@ function countIsShownCells() {
 
 }
 
-function clickHint(){
-// not writen yet
+
+function clickHint() {
+      // not writen yet
 
 
 }
