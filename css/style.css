@@ -9,12 +9,11 @@
 
 
 body {
-
-      /* background-color: rgb(255, 255, 255); */
+      margin: 0;
+      padding: 0;
       text-align: center;
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      /* background-image: url('img/backGround.png');
-      background-repeat: no-repeat */
+      overflow-x: hidden;  
 }
 
 
@@ -49,6 +48,7 @@ table {
 footer {
       background-color: var(--darkBrown);
       width: 100%;
+      position: absolute;
       bottom: 0;
       padding: 10px;
       text-align: left;
@@ -60,7 +60,7 @@ footer {
 
 .main-div {
       margin: auto;
-      height: 900px;
+      height: 750px;
       width: 660px;
       /* width: 500px; */
       background-image: url('../img/background.png');
@@ -82,7 +82,7 @@ footer {
 
 
 .play-zone {
-      margin-top: 270px;
+      margin-top: 180px;
 }
 
 
@@ -282,4 +282,10 @@ button:hover {
 
 .color-8 {
       color: rgb(0, 0, 0);
+}
+
+.bottom-btns{
+      text-align: center;
+      margin-top: 10px;
+      width: 100%;
 }

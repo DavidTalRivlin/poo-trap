@@ -408,6 +408,11 @@ function countIsShownCells() {
 
 }
 
+function safeClick(){
+      
+}
+
+
 
 function clickHint() {
       // not writen yet
