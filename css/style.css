@@ -13,7 +13,7 @@ body {
       padding: 0;
       text-align: center;
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-      overflow-x: hidden;  
+      overflow-x: hidden;
 }
 
 
@@ -41,7 +41,7 @@ table {
       background-color: rgb(255, 255, 255);
       padding: 15px;
       border-radius: 10px;
-     
+
 }
 
 
@@ -62,12 +62,11 @@ footer {
       margin: auto;
       height: 750px;
       width: 660px;
-      /* width: 500px; */
       background-image: url('../img/background.png');
       background-size: 100%;
       background-repeat: no-repeat;
       background-position: center;
-      
+
 }
 
 
@@ -96,7 +95,7 @@ footer {
 
 
 .poo-button:hover {
-      filter: brightness(75%);    
+      filter: brightness(75%);
 }
 
 
@@ -110,7 +109,7 @@ footer {
 .cell {
       text-align: center;
       background-color: var(--veryLightBrown);
-      transition: all 0.5s ease-out;  
+      transition: all 0.5s ease-out;
 }
 
 
@@ -123,7 +122,7 @@ footer {
 }
 
 .cell-size8 {
-      
+
       width: 28.7px;
       height: 28.7px;
       border-radius: 5px;
@@ -238,17 +237,18 @@ button:hover {
       padding: 2px 4px;
 }
 
-.hint-pic {
-      width: 50px;
-      height: 50px;
+.safe-cell-img {
+      width: 70%;
+
       border: none;
       cursor: pointer;
 
 }
 
-.hint {
+.safe-cell-btn {
       background-color: transparent;
       border: none;
+
 }
 
 
@@ -284,8 +284,16 @@ button:hover {
       color: rgb(0, 0, 0);
 }
 
-.bottom-btns{
+.bottom-btns {
       text-align: center;
       margin-top: 10px;
       width: 100%;
+}
+
+.safe-cell-btn-img {
+      height: 60px;
+}
+
+.safe-click-text {
+      vertical-align: middle
 }
